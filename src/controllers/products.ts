@@ -3,7 +3,7 @@ import * as productsService from '../services/products';
 
 const createProduct = async (req: Request, res: Response): Promise<Response> => {
   const { name, amount } = req.body;
-  const product = await productsService.createProduct(name, amount);
+  const product = await productsService.createProduct({ name, amount });
   return res.status(product.code).json(product.data);
 };
 

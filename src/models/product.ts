@@ -2,7 +2,8 @@ import { ResultSetHeader } from 'mysql2';
 import Product from '../interfaces/product';
 import connection from './connection';
 
-export const createProduct = async (name: string, amount: string): Promise<Product | null> => {
+export const createProduct = async (product: Product): Promise<Product | null> => {
+  const { name, amount } = product;
   const query = 'INSERT INTO Trybesmith.Products (name, amount) VALUES ( ?, ? )';
   const [{ insertId }] = await connection.execute<ResultSetHeader>(query, [name, amount]);
   if (!insertId) return null;
