@@ -3,6 +3,7 @@ import userModel from '../models/user';
 import User from '../interfaces/user';
 import generateToken from '../helpers/generateToken';
 import statusHttp from '../types/statusHttp';
+import Messages from '../types/userMessages';
 
 const createUser = async (user: User): Promise<IReturnUsers> => {
   const { username, classe, level, password } = user;
@@ -10,7 +11,7 @@ const createUser = async (user: User): Promise<IReturnUsers> => {
   if (!newUser) {
     return { 
       code: statusHttp.NOT_IMPLEMENTED,
-      error: { message: 'Erro ao criar usuário' }
+      error: { message: Messages.NOT_CREATED },
     };
   }
   const token = generateToken(newUser);
