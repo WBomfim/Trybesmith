@@ -1,6 +1,6 @@
-enum Messages {
+enum ProductMessages {
   NOT_CREATED = 'Product not created',
   NOT_FOUND = 'Product not found',
 }
 
-export default Messages;
+export default ProductMessages;

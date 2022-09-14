@@ -2,7 +2,7 @@ import * as productModel from '../models/product';
 import { IReturnProducts, IReturnProduct } from '../interfaces/returnService';
 import Product from '../interfaces/product';
 import StatusHttp from '../types/statusHttp';
-import Messages from '../types/messagesProduct';
+import Messages from '../types/productMessages';
 
 export const createProduct = async (product: Product): Promise<IReturnProduct> => {
   const { name, amount } = product;
