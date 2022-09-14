@@ -11,3 +11,9 @@ export interface IReturnProducts {
   error?: { message: string },
   data?: IProduct[],
 }
+
+export interface IReturnUsers {
+  code: number,
+  error?: { message: string },
+  data?: string,
+}

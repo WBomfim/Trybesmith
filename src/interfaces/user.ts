@@ -1,7 +1,7 @@
 export default interface IUser {
-  id?: string;
+  id?: number;
   username: string;
   classe: string;
   level: number;
-  password: string;
+  password?: string;
 }

@@ -4,9 +4,10 @@ import IUser from '../interfaces/user';
 const SECRTET_KEY = 'minhaSenhaSuperSecreta';
 
 export default (user: IUser): string => {
-  const { username, classe } = user;
+  const { id, username, classe } = user;
 
   const payload = {
+    id,
     username,
     classe,
   };
