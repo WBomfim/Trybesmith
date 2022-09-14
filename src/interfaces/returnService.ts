@@ -1,9 +1,13 @@
-import Product from './product';
+import IProduct from './product';
 
-interface ReturnService {
+export interface IReturnProduct {
   code: number,
-  error?: { message: string } | null,
-  data?: Product | Product[] | null,
+  error?: { message: string },
+  data?: IProduct,
 }
 
-export default ReturnService;
+export interface IReturnProducts {
+  code: number,
+  error?: { message: string },
+  data?: IProduct[],
+}
