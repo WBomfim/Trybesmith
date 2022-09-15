@@ -7,7 +7,7 @@ const getAllOrders = async (): Promise<IOrder[] | null> => {
     FROM Trybesmith.Orders AS Od
     JOIN Trybesmith.Products AS Pd ON Pd.orderId = Od.id
     GROUP BY Od.id
-    ORDER BY Od.id, Od.userId;`
+    ORDER BY Od.userId;`
   );
   const [data] = await connection.execute(query);
   if (!data) return null;
