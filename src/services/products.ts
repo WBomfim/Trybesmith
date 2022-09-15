@@ -3,7 +3,7 @@ import { IReturnProducts, IReturnProduct } from '../interfaces/returnService';
 import Product from '../interfaces/product';
 import StatusHttp from '../types/statusHttp';
 import Messages from '../types/productMessages';
-import validateProductInfo from '../schemas/validateProductInfo';
+import validateProductInfo from '../schemas/validateProductInfos';
 import IReturnValidations from '../interfaces/returnValidations';
 
 export const createProduct = async (product: Product): Promise<IReturnProduct> => {
