@@ -16,3 +16,10 @@ export const getAllProducts = async (): Promise<Product[] | null> => {
   if (!data) return null;
   return data as Product[];
 };
+
+export const updateProductOrder = async (id: number, orderId: number): Promise<true | null> => {
+  const query = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?';
+  const [data] = await connection.execute(query, [orderId, id]);
+  if (!data) return null;
+  return true;
+};
