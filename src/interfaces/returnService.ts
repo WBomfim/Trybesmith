@@ -1,4 +1,5 @@
 import IProduct from './product';
+import IOrder from './order';
 
 export interface IReturnProduct {
   code: number,
@@ -16,4 +17,10 @@ export interface IReturnUsers {
   code: number,
   error?: { message: string },
   data?: { token: string },
+}
+
+export interface IReturnOrders {
+  code: number,
+  error?: { message: string },
+  data?: IOrder[],
 }
