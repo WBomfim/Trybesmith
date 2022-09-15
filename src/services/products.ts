@@ -3,9 +3,14 @@ import { IReturnProducts, IReturnProduct } from '../interfaces/returnService';
 import Product from '../interfaces/product';
 import StatusHttp from '../types/statusHttp';
 import Messages from '../types/productMessages';
+import validateProductInfo from '../schemas/validateProductInfo';
+import IReturnValidations from '../interfaces/returnValidations';
 
 export const createProduct = async (product: Product): Promise<IReturnProduct> => {
   const { name, amount } = product;
+  const validation = validateProductInfo({ name, amount });
+  const { error } = validation as IReturnValidations;
+  if (error) return error;
   const newProduct = await productModel.createProduct({ name, amount });
   if (!newProduct) {
     return { 
