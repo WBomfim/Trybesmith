@@ -24,3 +24,9 @@ export interface IReturnOrders {
   error?: { message: string },
   data?: IOrder[],
 }
+
+export interface IReturnLogin {
+  code: number,
+  error?: { message: string },
+  data?: { token: string },
+}

@@ -8,11 +8,11 @@ const validateLoginInfos = (user: User): ReturnValidations | true => {
   const schema = Joi.object({
     username: Joi.string().required().messages({
       'string.empty': Messages.USERNAME_REQUIRED,
-      'string.required': Messages.USERNAME_REQUIRED,
+      'any.required': Messages.USERNAME_REQUIRED,
     }),
     password: Joi.string().required().messages({
       'string.empty': Messages.PASSWORD_REQUIRED,
-      'string.required': Messages.PASSWORD_REQUIRED,
+      'any.required': Messages.PASSWORD_REQUIRED,
     }),
   });
 
