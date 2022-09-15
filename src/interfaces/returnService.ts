@@ -15,5 +15,5 @@ export interface IReturnProducts {
 export interface IReturnUsers {
   code: number,
   error?: { message: string },
-  data?: string,
+  data?: { token: string },
 }

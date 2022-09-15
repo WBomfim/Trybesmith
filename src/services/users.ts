@@ -15,7 +15,7 @@ const createUser = async (user: User): Promise<IReturnUsers> => {
     };
   }
   const token = generateToken(newUser);
-  return { code: statusHttp.CREATED, data: token };
+  return { code: statusHttp.CREATED, data: { token } };
 };
 
 export default { createUser };
