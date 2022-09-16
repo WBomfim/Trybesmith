@@ -7,8 +7,10 @@ const createUser = async (user: User): Promise<User | null> => {
   const query = (
     'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES ( ?, ?, ?, ? )'
   );
-  const [{ insertId }] = await connection
-    .execute<ResultSetHeader>(query, [username, classe, level, password]);
+  const [{ insertId }] = await connection.execute<ResultSetHeader>(
+    query,
+    [username, classe, level, password],
+  );
   if (!insertId) return null;
   return { id: insertId, username, classe, level };
 };

@@ -1,4 +1,4 @@
-export default interface ReturnValidations {
+export default interface IReturnValidations {
   error: {
     code: number;
     error: {

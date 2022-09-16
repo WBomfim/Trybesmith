@@ -1,6 +1,6 @@
 import { IReturnOrders } from '../interfaces/returnService';
 import IReturnValidation from '../interfaces/returnValidations';
-import orderModel from '../models/order';
+import * as orderModel from '../models/order';
 import * as oderProduct from '../models/product';
 import validateOrderInfos from '../schemas/validateOrderInfos';
 import StatusHttp from '../types/statusHttp';

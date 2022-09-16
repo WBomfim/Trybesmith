@@ -5,7 +5,7 @@ import Messages from '../types/generalMessages';
 
 const SECRTET_KEY = 'minhaSenhaSuperSecreta';
 
-const auth = (req: Request, res: Response, next: NextFunction) => {
+export default (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -22,5 +22,3 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
       .json({ message: Messages.UNAUTHORIZED });
   }
 };
-
-export default auth;
