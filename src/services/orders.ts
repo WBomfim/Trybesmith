@@ -1,6 +1,8 @@
 import { IReturnOrders } from '../interfaces/returnService';
+import IReturnValidation from '../interfaces/returnValidations';
 import orderModel from '../models/order';
 import * as oderProduct from '../models/product';
+import validateOrderInfos from '../schemas/validateOrderInfos';
 import StatusHttp from '../types/statusHttp';
 import Messages from '../types/orderMessages';
 
@@ -16,6 +18,8 @@ const getAllOrders = async (): Promise<IReturnOrders> => {
 };
 
 const createOrder = async (userId: number, productsIds: number[]): Promise<IReturnOrders> => {
+  const { error } = validateOrderInfos(productsIds) as IReturnValidation;
+  if (error) return error;
   const orderId = await orderModel.createOrder(userId);
   await Promise.all(
     productsIds.map((productId) => oderProduct.updateProductOrder(productId, orderId)),
