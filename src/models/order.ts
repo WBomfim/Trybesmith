@@ -15,13 +15,12 @@ const getAllOrders = async (): Promise<IOrder[] | null> => {
   return data as IOrder[];
 };
 
-const createOrder = async (userId: number): Promise<IOrder | null> => {
+const createOrder = async (userId: number): Promise<number> => {
   const query = (
     'INSERT INTO Trybesmith.Orders (userId) VALUES (?);'
   );
   const [{ insertId }] = await connection.execute<ResultSetHeader>(query, [userId]);
-  if (!insertId) return null;
-  return { id: insertId, userId };
+  return insertId;
 };
 
 export default { 

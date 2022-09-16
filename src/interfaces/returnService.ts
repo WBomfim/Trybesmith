@@ -22,7 +22,7 @@ export interface IReturnUsers {
 export interface IReturnOrders {
   code: number,
   error?: { message: string },
-  data?: IOrder[],
+  data?: IOrder[] | IOrder,
 }
 
 export interface IReturnLogin {
