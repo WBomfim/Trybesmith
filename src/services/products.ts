@@ -1,12 +1,12 @@
 import * as productModel from '../models/product';
-import { IReturnProducts, IReturnProduct } from '../interfaces/returnService';
+import { IReturnProducts } from '../interfaces/returnService';
 import Product from '../interfaces/product';
 import StatusHttp from '../types/statusHttp';
 import Messages from '../types/productMessages';
 import validateProductInfo from '../schemas/validateProductInfos';
 import IReturnValidations from '../interfaces/returnValidations';
 
-export const createProduct = async (product: Product): Promise<IReturnProduct> => {
+export const createProduct = async (product: Product): Promise<IReturnProducts> => {
   const { name, amount } = product;
   const validation = validateProductInfo({ name, amount });
   const { error } = validation as IReturnValidations;

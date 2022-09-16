@@ -1,4 +1,4 @@
-import { IReturnLogin } from '../interfaces/returnService';
+import { IReturnUsers } from '../interfaces/returnService';
 import loginModel from '../models/login';
 import IUser from '../interfaces/user';
 import validateLoginInfos from '../schemas/validateLoginInfos';
@@ -7,7 +7,7 @@ import StatusHttp from '../types/statusHttp';
 import Messages from '../types/userMessages';
 import generateToken from '../helpers/generateToken';
 
-const login = async (user: IUser): Promise<IReturnLogin> => {
+const login = async (user: IUser): Promise<IReturnUsers> => {
   const { username, password } = user;
   const validate = validateLoginInfos({ username, password });
   const { error } = validate as ReturnValidations;
