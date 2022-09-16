@@ -6,7 +6,7 @@ import validateOrderInfos from '../schemas/validateOrderInfos';
 import StatusHttp from '../types/statusHttp';
 import Messages from '../types/orderMessages';
 
-const getAllOrders = async (): Promise<IReturnOrders> => {
+export const getAllOrders = async (): Promise<IReturnOrders> => {
   const orders = await orderModel.getAllOrders();
   if (!orders) {
     return {
@@ -14,20 +14,19 @@ const getAllOrders = async (): Promise<IReturnOrders> => {
       error: { message: Messages.NOT_FOUND },
     };
   }
+
   return { code: StatusHttp.OK, data: orders };
 };
 
-const createOrder = async (userId: number, productsIds: number[]): Promise<IReturnOrders> => {
+export const createOrder = async (userId: number, productsIds: number[])
+: Promise<IReturnOrders> => {
   const { error } = validateOrderInfos(productsIds) as IReturnValidation;
   if (error) return error;
+
   const orderId = await orderModel.createOrder(userId);
   await Promise.all(
     productsIds.map((productId) => oderProduct.updateProductOrder(productId, orderId)),
   );
-  return { code: StatusHttp.CREATED, data: { userId, productsIds } };
-};
 
-export default { 
-  getAllOrders,
-  createOrder,
+  return { code: StatusHttp.CREATED, data: { userId, productsIds } };
 };

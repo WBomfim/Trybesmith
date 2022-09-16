@@ -7,11 +7,11 @@ import StatusHttp from '../types/statusHttp';
 import Messages from '../types/userMessages';
 import generateToken from '../helpers/generateToken';
 
-const login = async (user: IUser): Promise<IReturnUsers> => {
+const login = async (user: IUser) : Promise<IReturnUsers> => {
   const { username, password } = user;
-  const validate = validateLoginInfos({ username, password });
-  const { error } = validate as ReturnValidations;
+  const { error } = validateLoginInfos({ username, password }) as ReturnValidations;
   if (error) return error;
+
   const userResult = await loginModel.login({ username, password });
   if (!userResult) {
     return {
@@ -19,6 +19,7 @@ const login = async (user: IUser): Promise<IReturnUsers> => {
       error: { message: Messages.PASS_OR_USER_INVALID },
     };
   }
+
   const token = generateToken(userResult);
   return { code: StatusHttp.OK, data: { token } };
 };

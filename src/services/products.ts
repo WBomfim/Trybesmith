@@ -6,11 +6,11 @@ import Messages from '../types/productMessages';
 import validateProductInfo from '../schemas/validateProductInfos';
 import IReturnValidations from '../interfaces/returnValidations';
 
-export const createProduct = async (product: Product): Promise<IReturnProducts> => {
+export const createProduct = async (product: Product) : Promise<IReturnProducts> => {
   const { name, amount } = product;
-  const validation = validateProductInfo({ name, amount });
-  const { error } = validation as IReturnValidations;
+  const { error } = validateProductInfo({ name, amount }) as IReturnValidations;
   if (error) return error;
+
   const newProduct = await productModel.createProduct({ name, amount });
   if (!newProduct) {
     return { 
@@ -18,10 +18,11 @@ export const createProduct = async (product: Product): Promise<IReturnProducts> 
       error: { message: Messages.NOT_CREATED },
     };
   }
+
   return { code: StatusHttp.CREATED, data: newProduct };
 };
 
-export const getAllProducts = async (): Promise<IReturnProducts> => {
+export const getAllProducts = async () : Promise<IReturnProducts> => {
   const products = await productModel.getAllProducts();
   if (!products) {
     return { 
@@ -29,5 +30,6 @@ export const getAllProducts = async (): Promise<IReturnProducts> => {
       error: { message: Messages.NOT_FOUND },
     };
   }
+
   return { code: StatusHttp.OK, data: products };
 };

@@ -7,11 +7,11 @@ import Messages from '../types/userMessages';
 import validateUserInfos from '../schemas/validateUserInfos';
 import IReturnValidations from '../interfaces/returnValidations';
 
-const createUser = async (user: User): Promise<IReturnUsers> => {
+const createUser = async (user: User) : Promise<IReturnUsers> => {
   const { username, classe, level, password } = user;
-  const validate = validateUserInfos({ username, classe, level, password });
-  const { error } = validate as IReturnValidations;
+  const { error } = validateUserInfos({ username, classe, level, password }) as IReturnValidations;
   if (error) return error;
+
   const newUser = await userModel.createUser({ username, classe, level, password });
   if (!newUser) {
     return { 
@@ -19,6 +19,7 @@ const createUser = async (user: User): Promise<IReturnUsers> => {
       error: { message: Messages.NOT_CREATED },
     };
   }
+
   const token = generateToken(newUser);
   return { code: StatusHttp.CREATED, data: { token } };
 };
