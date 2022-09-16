@@ -3,7 +3,7 @@ import User from '../interfaces/user';
 import Messages from '../types/userMessages';
 import ReturnValidations from '../interfaces/returnValidations';
 
-export default (user: User): ReturnValidations | true => {
+export default (user: User) : ReturnValidations | true => {
   const { username, password } = user;
   const schema = Joi.object({
     username: Joi.string().required().messages({

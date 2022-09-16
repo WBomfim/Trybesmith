@@ -31,7 +31,7 @@ const schemaPassword = Joi.string().min(8).required().messages({
   'any.required': Messages.PASSWORD_REQUIRED,
 });
 
-export default (user: IUser): IReturnValidations | true => {
+export default (user: IUser) : IReturnValidations | true => {
   const { username, classe, level, password } = user;
   const schema = Joi.object({
     username: schemaUsername,

@@ -17,7 +17,7 @@ const schemaAmount = Joi.string().min(2).required().messages({
   'any.required': Messages.AMOUNT_REQUIRED,
 });
 
-export default (product: IProduct): IReturnValidations | true => {
+export default (product: IProduct) : IReturnValidations | true => {
   const { name, amount } = product;
   const schema = Joi.object({
     name: schemaName,

@@ -2,7 +2,7 @@ import { ResultSetHeader } from 'mysql2';
 import connection from './connection';
 import IOrder from '../interfaces/order';
 
-export const getAllOrders = async (): Promise<IOrder[] | null> => {
+export const getAllOrders = async () : Promise<IOrder[] | null> => {
   const query = (
     `SELECT Od.id, Od.userId, JSON_ARRAYAGG(Pd.id) AS productsIds
     FROM Trybesmith.Orders AS Od
@@ -15,7 +15,7 @@ export const getAllOrders = async (): Promise<IOrder[] | null> => {
   return data as IOrder[];
 };
 
-export const createOrder = async (userId: number): Promise<number> => {
+export const createOrder = async (userId: number) : Promise<number> => {
   const query = (
     'INSERT INTO Trybesmith.Orders (userId) VALUES (?);'
   );
